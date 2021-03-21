@@ -5,11 +5,9 @@ var update = 'https://api.mikebeas.com/shortcuts/pubkit'
 var optout = 0;
 
 
-
 function cv(x, y) {
-	if (typeof x !== 'string' || typeof y !== 'string') return 'Error ❌';
-	a = x.split('.');
-	b = y.split('.');
+	a = String(x).split('.');
+	b = String(y).split('.');
 	const z = Math.min(a.length, b.length);
 	for( let i = 0; i < z; ++ i) {
 		a[i] = parseInt(a[i], 10);
@@ -23,12 +21,11 @@ kill: if (navigator.onLine == false) {
 	document.write('Offline ❌')
 } else {
 	if(id == '') {
-		// var version = navigator.appVersion.match('([0-9]..[0-9])')[0].split('_');
-		var version = ['13','5'];
+		var sysver = ['13','5'];
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", update, false);
-		xhr.setRequestHeader('system', version[0]);
-		xhr.setRequestHeader('release', version[1]);
+		xhr.setRequestHeader('system', sysver[0]);
+		xhr.setRequestHeader('release', sysver[1]);
 		xhr.send(null);
 		var data = JSON.parse(xhr.responseText);
 		var dl = data.URL;
