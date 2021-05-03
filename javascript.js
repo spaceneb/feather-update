@@ -15,8 +15,8 @@ function getData(url) {
 	var sysver = ["13","5"];
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, false);
-	input.Mode.toUpperCase() == 'PUBKIT' ? xhr.setRequestHeader("system", sysver[0]) : null;
-	input.Mode.toUpperCase() == 'PUBKIT' ? xhr.setRequestHeader("release", sysver[1]) : null;
+	xhr.setRequestHeader("system", sysver[0])
+	xhr.setRequestHeader("release", sysver[1])
 	xhr.send(null);
 	return JSON.parse(xhr.responseText);
 }
